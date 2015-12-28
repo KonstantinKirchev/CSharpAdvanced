@@ -1,0 +1,543 @@
+var towns = new[] {"Sofia", "Toronto", "Rome"};
+
+DateTime[] dates = {
+	DateTime.Now,
+	DateTime.Now.AddYears(-1),
+	new DateTime(2013,7,21)
+}
+
+Console.Write("n = ");
+int n = int.Parse(Console.ReadLine());
+int[] arr = new int[n];
+for (int i = 0; i < arr.Length; i++)
+{
+    Console.Write("arr[{0}] = ",i);
+    arr[i] = int.Parse(Console.ReadLine());
+}
+Console.Write("The sum is = " + arr.Sum()+"\n")
+
+string arrString = Console.ReadLine();
+string[] items = arrString.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+int[] arr = new int[items.Length];
+for (int i = 0; i < arr.Length; i++)
+{
+    arr[i] = int.Parse(items[i]);
+}
+................................................
+int[] arr = Console.ReadLine().Split(' ')
+   .Select(int.Parse).ToArray();
+................................................
+Console.WriteLine(arr.Sum());
+
+int[] arr = { 1, 2, 3 };
+arr.ToList().ForEach(a => Console.WriteLine(a));
+
+var arr = new[] - масив от анонимни обекти
+            {
+                new { Name = "Пешо", Age = 21 }, - анонимен обект
+                new { Name = "Ани", Age = 12 },
+                new { Name = "Константин", Age = 33 },
+            };
+            foreach (var person in arr)
+            {
+                Console.WriteLine(person);
+            }
+
+Array.Clear(arr, 2, 1); - Премахва 2рият елемент от масива.
+
+Array.Sort(arr,(a, b) => a.Age.CompareTo(b.Age)); - Така сортирам хората по тяхната възраст
+
+string[] result = Array.ConvertAll(arr, a => a.Name);
+            foreach (var name in result)
+            {
+                Console.WriteLine(name);
+            }
+
+List<object> list = new List<object>()
+            {
+                "Pesho",
+                "Gosho",
+                "Константин",
+                "Ралица",
+                33,
+                39,
+                new DateTime(2015,3,21)
+            };
+
+list.Insert(4,"Maria");
+list.RemoveAt(0);
+list.RemoveRange(2, 2);
+string[] names = { "Bobi", "Pesho" };
+list.AddRange(names);
+input = new string[] { "Tyrannosaurus", "Deinonychus", "Velociraptor"};
+list.InsertRange(3, input);
+Console.WriteLine(list.IndexOf("Константин"));
+
+List<int> items = Console.ReadLine().Split(' ').Select(int.Parse).ToList();
+items.ForEach(i => Console.WriteLine(i)); - Така отпечатвам елементите на листа.
+
+items.AddRange(new int[]{4,5,6,5,5});
+Console.WriteLine(items.Count(p => p == 5)); - Намери ми тези p които са равни на 5 
+
+List<int> numbers = new List<int>(){2,4,5,6,2,3,1,5,3,2};
+int count = 0;
+int startIndex = -1;
+int num = int.Parse(Console.ReadLine());
+            while (true)
+            {
+                startIndex = numbers.IndexOf(num, startIndex + 1);
+                if (startIndex == -1)
+                {
+                    break;
+                }
+                count++;
+            }
+Console.WriteLine(count);
+
+items.Sort((a, b) => -a.CompareTo(b)); - Така подреждам елементите на листа в обратен ред.
+
+Console.WriteLine(items.Skip(2).FirstOrDefault()); - Пропуска 1вите 2 елемента и ми показва 3тият.
+Console.WriteLine("Skip Number = {0}",numbers.Skip(2).Take(1).First());
+
+List<string> towns = new List<string>(){"Sofia", "Varna", "Sofia", "Russe", "Varna"};
+towns.Distinct().ToList().ForEach(t=>Console.WriteLine(t));
+
+return - Винаги излиза от конкретният метод. Ако съм в главният метод програмата свършва.
+
+........................................................................................................
+int[, ,] matrix = new int[10, 5, 5];
+            for (int layer = 0; layer < array.GetLength(0); layer++)
+            {
+                for (int row = 0; row < array.GetLength(1);  row++)
+                {
+                    for (int col = 0; col < array.GetLength(2);  col++)
+                    {
+                        matrix[layer, row, col] = layer + row + col;
+                    }
+                }
+            }
+            for (int layer = 0; layer < array.GetLength(0); layer++)
+            {
+                for (int row = 0; row < array.GetLength(1); row++)
+                {
+                    for (int col = 0; col < array.GetLength(2); col++)
+                    {
+                        Console.Write(matrix[layer, row, col]);
+                    }
+                    Console.WriteLine();
+                }
+                Console.WriteLine("----------------");
+            }
+...........................................................................................
+int[,] matrix = new int[5, 5];
+            int maxSum = int.MinValue;
+            int sum = 0;
+            int startIndexRow = 0;
+            int startIndexCol = 0;
+            for (int row = 0; row < matrix.GetLength(0); row++)
+            {
+                for (int col = 0; col < matrix.GetLength(1); col++)
+                {
+                    matrix[row, col] = row + col;
+                }
+            }
+
+            for (int row = 0; row < matrix.GetLength(0) - 1; row++)
+            {
+                for (int col = 0; col < matrix.GetLength(1) - 1; col++)
+                {
+                    sum = matrix[row, col] + matrix[row, col + 1] + matrix[row + 1, col] + matrix[row + 1, col + 1];
+                    if (sum > maxSum)
+                    {
+                        maxSum = sum;
+                        startIndexRow = row;
+                        startIndexCol = col;
+                    }
+                }
+            }
+            Console.WriteLine(maxSum);
+            for (int row = startIndexRow; row < startIndexRow + 2; row++)
+            {
+                for (int col = startIndexCol; col < startIndexCol + 2; col++)
+                {
+                    Console.Write("{0,4}",matrix[row,col] + " ");
+                }
+                Console.WriteLine();
+            }
+.....................................................................................................
+int[,] matrix1 = { { 6, 8, 4 }, { 2, 4, 5 } };
+            int[,] matrix2 = { { 5, 9 }, { 4, 2 }, { 3, 8} };
+            int[,] resultMatrix = new int[matrix1.GetLength(0), matrix2.GetLength(1)];
+
+            for (int row = 0; row < resultMatrix.GetLength(0); row++)
+            {
+                for (int col = 0; col < resultMatrix.GetLength(1); col++)
+                {
+                    resultMatrix[row, col] = MultiplyMatrix(matrix1, matrix2, row, col);
+                }
+            }
+
+            for (int row = 0; row < resultMatrix.GetLength(0); row++)
+            {
+                for (int col = 0; col < resultMatrix.GetLength(1); col++)
+                {
+                    Console.Write(resultMatrix[row, col] + " ");
+                    
+                }
+                Console.WriteLine();
+            }
+        }
+
+        private static int MultiplyMatrix(int[,] matrix1, int[,] matrix2, int row, int col)
+        {
+            int result = 0;
+            for (int i = 0; i < matrix1.GetLength(1); i++)
+            {
+                result += matrix1[row, i] * matrix2[i, col];
+            }
+            return result;
+        }
+...................................................................................................
+int[,] matrix = new int[12, 6];
+            int count = 1;
+            int number = 0;
+            int backNumber = 0;
+
+            for (int row = 0; row < matrix.GetLength(0); row++)
+            {
+                if (count % 2 == 0)
+                {
+                    backNumber = number + matrix.GetLength(1);
+                    for (int col = 0; col < matrix.GetLength(1); col++)
+                    {
+                        matrix[row, col] = backNumber;
+                        backNumber--;
+                        number++;
+                    }
+                }
+                else
+                {
+                    for (int col = 0; col < matrix.GetLength(1); col++)
+                    {
+                        number++;
+                        matrix[row, col] = number; 
+                    }
+                }
+                count++;
+            }
+
+            for (int row = 0; row < matrix.GetLength(0); row++)
+            {
+                for (int col = 0; col < matrix.GetLength(1); col++)
+                {
+                    Console.Write(matrix[row, col] + " ");
+                }
+                Console.WriteLine();
+            }
+...................................................................................................
+
+HashSet<string> set = new HashSet<string>();
+set.Add("Pesho");
+set.Add("Ani");
+set.Add("Konstantin");
+set.Remove("Pesho");
+
+SortedSet<string> set = new SortedSet<string>();
+set.Add("Pesho");
+set.Add("Konstantin");
+set.Remove("Pesho");
+set.Count; // 1
+
+Dictionary<string, string> phonebook = new Dictionary<string, string>();
+phonebook["John Smith"] = "+1-555-32-14"
+
+Dictionary<string,string> phonebook = new Dictionary<string, string>();
+            phonebook["John Smith"] = "+1-555-3232";
+            phonebook["Lisa Smith"] = "+1-555-3127";
+            phonebook["Konstantin Kirchev"] = "+1-416-509-0281";
+            phonebook["Ralitsa Kircheva"] = "+359-888-610-285";
+            phonebook.Remove("John Smith");
+            foreach (var phone in phonebook)
+            {
+                Console.WriteLine(phone.Key +" --> " + phone.Value);
+            }
+
+SortedDictionary<DateTime,string> events = new SortedDictionary<DateTime, string>();
+            events[new DateTime(2013, 1, 1)] = "Заминах за Канада";
+            events[new DateTime(2008, 9, 13)] = "Завърших университета";
+            events[new DateTime(2000, 5, 21)] = "Завърших училище";
+            foreach (var even in events)
+            {
+                Console.WriteLine("{0:D} --> {1}",even.Key,even.Value);
+            }
+            Console.WriteLine(events.Count);
+            Console.WriteLine(events.ContainsKey(new DateTime(2013, 1, 1)));
+            Console.WriteLine(events.ContainsValue("Завърших училище"));
+.....................................................................................
+String and StringBuilder
+
+string str = 33.ToString(); - Така стрингосвам числото 33.
+string str = new string('*',20);
+
+int result = string.Compare(str1,str2,true); - Това е когато стравняваме 2ва стринга case-insensitive
+int result = string.Compare(str1,str2,false); - Това е когато стравняваме 2ва стринга case-sensitive
+result == 0 - ако са равни
+result < 0 - ако 1вият стринг е преди 2рият.
+result > 0 - ако 2рият е преди 1вият.
+
+str1 == str2; или str1.Equals(str2);
+
+string.Empty + ch1 + ch2 -> ab - Празният стринг трябва да е от лявата страна, а не от дясната. Защото операциите се извършват от ляво на дясно.
+"" + ch1 + ch2 -> ab
+ch1 + ch2 -> 195 - събира стойностите на двата чара
+
+str.IndexOf("#",2); - Намира позицията на която се среща след 2рият индекс.
+
+str.Substring(int startIndex, int length); или str.Substring(int startIndex); 
+
+const string ListOfBeers = "Amstel, Haineken. Zagorka  Astika";
+string[] beers = ListOfBeers.Split(
+	new[] { ' ', ',', '.' },
+	StringSplitOptions.RemoveEmptyEntries);
+
+string cocktail = "Vodka + Martini + Cherry";
+string replaced = cocktail.Replace("+", "and");
+// Vodka and Martini and Cherry
+
+string price = "$ 1234567";
+string lowPrice = price.Remove(2, 3);
+// $ 4567
+
+string s = " \t\nHello!!! \n";
+string clean = s.Trim(' ', ',' ,'!', '\n','\t');
+Console.WriteLine(clean); // Hello
+
+str.TrimStart() and str.TrimEnd()
+
+string s = "Hello World";
+Stopwatch time = new Stopwatch();
+time.Start();
+string reverse = ReverseString(s); // dlroW olleH
+time.Stop();
+Console.WriteLine(time.Elapsed);
+public static string ReverseString(string s)
+{
+    StringBuilder sb = new StringBuilder();
+    for (int i = s.Length - 1; i >= 0; i--)
+    {
+        sb.Append(s[i]);
+    }    
+
+    return sb.ToString(); - Обръща StringBuilder-а в string
+}
+
+sb.Length
+sb.Capacity
+sb.Append(…) appends a string or another object after the last character in the buffer
+sb.AppendLine(…) - добавя но ред след всяко appendване 
+sb.AppendFormat("Upper: {0}", ch); 
+sb.Remove(int startIndex, int length) removes the characters in given range
+sb.Insert(int index, string str) inserts given string (or object) at given position
+sb.Replace(string oldStr, string newStr) replaces all occurrences of a substring
+sb.ToString() converts the StringBuilder to String
+
+char.IsUpper(s[i]) - Проверява дали текущият чар е главна буква
+
+...........................................................................................
+Regular Expression
+
+^[a-z]+ - Започващи с малка буква
+[a-z]+$ - Завършваща на малка буква
+
+\d{2}-(?<month>\w{3})-\d{4} - Така си наименовам групата - Defines a non-capturing group
+
+^(?:Hi|hello),\s*(\w+)$ => Hi, Peter - Така хващaм само името.
+
+(?<=#)\d{1,4} => Gladstone #354 - Така хващам номера. - Positive lookbehind
+
+(?<![0-9\-])\d+ => Gladstone St. #-2 -123 354 2 - Така хващам всички положителни числа - Negative lookbehind
+
+\d{2}(-|\/)\d{2}\1\d{4} => 21-03-1982 или 21/03/1982 - Чрез използване на backreference на вече хваната група
+
+string text = "Nakov: 123";
+string pattern = @"([A-Z][a-z]+): (\d+)";
+Regex regex = new Regex(pattern);
+Match match = regex.Match(text);
+Console.WriteLine(match.Groups.Count); // 3
+Console.WriteLine("Matched text: \"{0}\"", match.Groups[0]);
+Console.WriteLine("Name: {0}", match.Groups[1]); // Nakov
+Console.WriteLine("Number: {0}", match.Groups[2]); // 123
+
+regex.IsMatch(text) - true or false
+
+string text = "Nakov: 123, Branson: 456";
+string pattern = @"([A-Z][a-z]+): (\d+)";
+Regex regex = new Regex(pattern);
+MatchCollection matches = regex.Matches(text, pattern);
+Console.WriteLine("Found {0} matches", matches.Count);
+foreach (Match match in matches)
+{
+    Console.WriteLine("Name: {0}", match.Groups[1]);
+}
+// Found 2 matches
+// Name: Nakov
+// Name: Branson
+
+string text = "Nakov: 123, Branson: 456";
+string pattern = @"\d{3}";
+string replacement = "999";
+Regex regex = new Regex(pattern);
+string result = regex.Replace(text, replacement);
+Console.WriteLine(result); 
+// Nakov: 999, Branson: 999
+
+string text = "1   2 3      4";
+string pattern = @"\s+";
+string[] results = Regex.Split(text, pattern);
+Console.WriteLine(string.Join(", ", results)); // 1, 2, 3, 4
+..............................................................................................................................
+Files and Streams
+
+FileStream stream = new FileStream("text.txt",FileMode.Open);
+            byte[] buffer = new byte[4096];
+            try
+            {
+                while (true)
+                {
+                    int readByte = stream.Read(buffer, 0, buffer.Length);
+                    if (readByte == 0)
+                    {
+                        break;
+                    }
+                    Console.Write(readByte);
+                }
+            }
+            finally
+            {
+                stream.Close();
+            }
+            Console.WriteLine();
+
+var tcpListener = new TcpListener(IPAddress.Any, PortNumber);
+tcpListener.Start();
+Console.WriteLine("Listening on port {0}...", PortNumber);
+
+while (true)
+{
+    using (NetworkStream stream = tcpListener.AcceptTcpClient().GetStream())
+    {
+        byte[] request = new byte[4096];
+        stream.Read(request, 0, 4096);
+        Console.WriteLine(Encoding.UTF8.GetString(request));
+
+        string html = string.Format("{0}{1}{2}{3} - {4}{2}{1}{0}", 
+            "<html>", "<body>", "<h1>", "Welcome to my awesome site!", DateTime.Now);
+        byte[] htmlBytes = Encoding.UTF8.GetBytes(html);
+        stream.Write(htmlBytes, 0, htmlBytes.Length);
+    }
+}
+
+.................................................................................................................................
+Functional Programming
+
+var evenNumbers = Enumerable.Range(0, 51).Select(number => 2 * number); - Това ми връща всички четни числа от 0 до 100
+
+List<int> list = new List<int>() { 1, 2, 3, 4 };
+List<int> evenNumbers = list.FindAll(x => (x % 2) == 0);
+foreach (var num in evenNumbers)
+{
+    Console.Write("{0} ", num);
+}
+Console.WriteLine();
+// 2 4
+
+list.RemoveAll(x => x > 3); // 1 2 3
+
+var pets = new Pet[]
+{ 
+    new Pet { Name="Sharo", Age=8 }, 
+    new Pet { Name="Rex", Age=4 },
+    new Pet { Name="Strela", Age=1 },
+    new Pet { Name="Bora", Age=3 }
+};
+var sortedPets = pets.OrderBy(pet => pet.Age); или var sortedPets = pets.OrderByDescending(pet => pet.Age);
+foreach (Pet pet in sortedPets)
+{
+    Console.WriteLine("{0} -> {1}", pet.Name, pet.Age);
+}
+
+List<string> towns = new List<string>()
+{ "Sofia", "Plovdiv", "Varna", "Sopot", "Silistra" };
+
+List<string> townsWithS =
+    towns.FindAll(delegate(string town)
+    {
+        return town.StartsWith("S");
+    });
+
+// A short form of the above (with lambda expression)
+List<string> townsWithS =
+    towns.FindAll((town) => town.StartsWith("S"));
+
+foreach (string town in townsWithS)
+{
+    Console.WriteLine(town);
+}
+
+int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+
+var querySmallNums =
+    from num in numbers
+    where num < 5
+    orderby num descending
+    select num;
+
+foreach (var num in querySmallNums)
+{
+   Console.Write(num + " ");
+}
+// The result is 4 1 3 2 0
+
+List<int> list = new List<int>() { 20, 1, 4, 8, 9, 44 };
+
+// Process each argument with code statements
+List<int> evenNumbers = list.FindAll((i) =>
+{
+    Console.WriteLine("value of i is: {0}", i);
+    return (i % 2) == 0; 
+});
+
+var studentQuery = students
+	.Where(student => student.Age >30 && student.Age <= 50)
+	.OrderBy(student => student.Name)
+	.Select(student => new{student.Age, student.Name})
+	.GroupBy(student => student.Age)
+	.OrderByDescending(studentGroup => studentGroup.Key);
+
+studentQuery.Any(student => student.Name = "Pesho") -> True
+studentQuery.All(student => student.Name = "Pesho") -> False
+studentQuery.Count(student => student.Name = "Pesho") -> 2
+
+studentQuery.ToList();
+studentQuery.Add();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

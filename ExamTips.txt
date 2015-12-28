@@ -1,0 +1,44 @@
+var sub = student.Value.Select(x => x.Key + " - " + x.Value.Average().ToString("0.00")).Aggregate((x, y) => x + ", " + y);
+Console.WriteLine("{0}: [{1}]", student.Key, sub);
+Това е хитрост за принтиране на изхода на Dictionary !!!
+Също така използвам SortedDictionary за да ми сортира външните и вътрешните ключове!!!
+
+output.AppendFormat("<td>{0}</td>", SecurityElement.Escape(matrix[row,col].ToString()));
+System.Security;
+
+(?<![A-Za-z])[A-Z]+(?![A-Za-z]) - Взима всички големи букви, пред които няма букви и след които няма букви. 
+Използва се LookAhead и LookBehind
+
+new string(match.Value.ToCharArray().Reverse().ToArray()) - Така обръщам буквите в мача!!!
+
+match.Index - Ми дава началният индекс на мачнатото нещо
+line = line.Remove(index, match.Value.Length);
+line = line.Insert(index, reverse);
+
+collection.Sort(start,count,StringComparer.InvariantCultureIgnoreCase);
+collection.Reverse(start, count);
+
+string result = Regex.Replace(input.ToString(),@"\s+", " ");
+
+if (!Regex.IsMatch(name, @"^[A-Z][a-z]+\s[A-Z][a-z]+$"))
+
+pin.Any(pinDigit => !char.IsDigit(pinDigit))
+
+.............................................................................................
+string reversedString = string.Join("", finalString.Reverse()); - Така се обръща стринг !!!
+.............................................................................................
+bool isPalindrome = GetStringForChecking(finalString) == GetStringForChecking(reversedString);
+private static string GetStringForChecking(string stringToCheck)
+        {
+            var regex = new Regex("[^A-Za-z0-9]");
+            string result = regex.Replace(stringToCheck, string.Empty);
+            return result.ToLower();
+        }
+Console.WriteLine("<div style='background-color:#{0}'>{1}</div>", isPalindrome ? "4FE000" : "E0000F", finalString);
+..............................................................................................
+string rotateStr = Console.ReadLine();
+string pattern = @"\d+";
+int rotate = int.Parse(Regex.Match(rotateStr, pattern).ToString()); - Така си взимам числата от стринг!!!
+..............................................................................................
+
+
